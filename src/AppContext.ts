@@ -40,6 +40,7 @@ import {
   onEveryBlock$
 } from './blockchain/network';
 import { user$ } from './blockchain/user';
+import {CDPViewPanel} from './cdp/CDPViewPanel';
 import { loadOrderbook$, Orderbook } from './exchange/orderbook/orderbook';
 import {
   createTradingPair$,
@@ -295,6 +296,7 @@ export function setupAppContext() {
   );
 
   const InstantTxRx = connect(InstantViewPanel, loadablifyLight(instant$));
+  const CDPTxRx = connect(CDPViewPanel, loadablifyLight(instant$));
 
   const TaxExporterTxRx = inject(TaxExporterView, {
     export: () => createTaxExport$(context$, initializedAccount$)
@@ -307,6 +309,7 @@ export function setupAppContext() {
     OfferMakePanelTxRx,
     OrderbookPanelTxRx,
     InstantTxRx,
+    CDPTxRx,
     PriceChartWithLoadingTxRx,
     TradingPairsTxRx,
     TransactionNotifierTxRx,

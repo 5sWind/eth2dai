@@ -1,0 +1,44 @@
+@import "../../utils/Mixins";
+@import "../../utils/Variables";
+
+.entry {
+  display: flex;
+  width: 100%;
+  max-width: 12rem;
+  justify-content: space-between;
+  align-items: center;
+
+  &.reversed {
+    .label {
+      color: rgba(255, 255, 255, 0.90)
+    }
+
+    .value {
+      color: $dark-gray-blue;
+    }
+
+    .infoIcon {
+      color: rgba(255, 255, 255, 0.90);
+      border-color: rgba(255, 255, 255, 0.90);
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    max-width: none;
+  }
+}
+
+.label {
+  @include fontMontserratMedium;
+  font-size: 12px;
+  color: $dark-gray-blue;
+  letter-spacing: 1.1px;
+}
+
+.value {
+  @include fontMontserratMedium;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.90);
+  letter-spacing: 1px;
+  text-align: right;
+}

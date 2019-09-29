@@ -21,7 +21,7 @@ $header-media-breakpoint: 800px;
   .logo {
     width: 132px;
     max-height: 37px;
-    margin: auto 1.5em auto auto;
+    margin-bottom: 100px;
 
     svg:hover :global(#bg) {
       fill-opacity: 0.35;

@@ -1,0 +1,45 @@
+@import "../../utils/Variables";
+@import "../../utils/Mixins";
+
+.asset {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+  border: 1px solid $grey-light;
+  border-radius: .325rem;
+
+  width: 100%;
+  height: 100px;
+
+  cursor: pointer;
+
+  color: white;
+  background: transparent;
+
+  @include fontMontserratMedium;
+  font-size: .75rem;
+  letter-spacing: 1px;
+
+  &:hover {
+    border-color: $button-border-hover;
+  }
+
+  &.locked {
+    pointer-events: none;
+
+    border-color: $button-border-disabled;
+    color: $button-border-disabled;
+
+    @include iconsDisabled(
+        $button-border-disabled,
+        $grey-darkest
+    )
+  }
+}
+
+.icon {
+  height: map-get($inputHeight, lg);
+  width: map-get($inputHeight, lg);
+}

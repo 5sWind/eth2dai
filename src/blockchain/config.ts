@@ -65,7 +65,19 @@ export const tokens = asMap('symbol', [
     digits: 5,
     digitsInstant: 3,
     maxSell: '10000000',
-    name: 'Ether',
+    name: 'Eth',
+    icon: SvgImageSimple(ethSvg),
+    // iconInverse: SvgImageSimple(ethInverseSvg),
+    iconCircle: SvgImageSimple(ethCircleSvg),
+    iconColor: SvgImageSimple(ethColorSvg),
+  },
+  {
+    symbol: 'TAU',
+    precision: 18,
+    digits: 5,
+    digitsInstant: 3,
+    maxSell: '10000000',
+    name: 'Eth',
     icon: SvgImageSimple(ethSvg),
     // iconInverse: SvgImageSimple(ethInverseSvg),
     iconCircle: SvgImageSimple(ethCircleSvg),
@@ -82,6 +94,18 @@ export const tokens = asMap('symbol', [
     // iconInverse: SvgImageSimple(ethCircleSvg),
     iconCircle: SvgImageSimple(ethCircleSvg),
     iconColor: SvgImageSimple(ethCircleSvg),
+  },
+  {
+    symbol: 'TAI',
+    precision: 18,
+    digits: 2,
+    digitsInstant: 2,
+    maxSell: '10000000',
+    name: 'Tai',
+    icon: SvgImageSimple(daiSvg),
+    // iconInverse: SvgImageSimple(daiInverseSvg),
+    iconCircle: SvgImageSimple(daiCircleSvg),
+    iconColor: SvgImageSimple(daiColorSvg),
   },
   {
     symbol: 'DAI',
@@ -236,7 +260,9 @@ const protoMain = {
   get saiTub() { return load(saiTub, '0x448a5065aebb8e423f0896e6c5d525c040f59af3'); },
   get tokens() {
     return asMap('token', [
+      loadToken('TAU', eth, '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'),
       loadToken('WETH', eth, '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'),
+      loadToken('TAI', erc20, '0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359'),
       loadToken('DAI', erc20, '0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359'),
       loadToken('MKR', erc20, '0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2'),
       loadToken('DGD', erc20, '0xe0b7927c4af23765cb51314a0e0521a9645f0e2a'),
@@ -292,7 +318,9 @@ const kovan: NetworkConfig = {
   get saiTub() { return load(saiTub, '0xa71937147b55deb8a530c7229c442fd3f31b7db2'); },
   get tokens() {
     return asMap('token', [
+      loadToken('TAU', eth, '0xd0a1e359811322d97991e03f863a0c30c2cf029c'),
       loadToken('WETH', eth, '0xd0a1e359811322d97991e03f863a0c30c2cf029c'),
+      loadToken('TAI', erc20, '0xc4375b7de8af5a38a93548eb8453a498222c4ff2'),
       loadToken('DAI', erc20, '0xc4375b7de8af5a38a93548eb8453a498222c4ff2'),
       loadToken('MKR', erc20, '0xaaf64bfcc32d0f15873a02163e7e500671a4ffcd'),
       loadToken('DGD', erc20, '0x62aeec5fb140bb233b1c5612a8747ca1dc56dc1b'),
@@ -344,7 +372,9 @@ const localnet: NetworkConfig =   {
   get saiTub() { return { address: '', contract: null }; },
   get tokens() {
     return asMap('token', [
+      loadToken('TAU', eth, '0x28085cefa9103d3a55fb5afccf07ed2038d31cd4'),
       loadToken('WETH', eth, '0x28085cefa9103d3a55fb5afccf07ed2038d31cd4'),
+      loadToken('TAI', erc20, '0xff500c51399a282f4563f2713ffcbe9e53cfb6fa'),
       loadToken('DAI', erc20, '0xff500c51399a282f4563f2713ffcbe9e53cfb6fa'),
       loadToken('MKR', erc20, '0xe80C262f63df9376d2ce9eDd373832EDc9FCA46E'),
       loadToken('DGD', erc20, '0x2f42E9A9BA1A8BfE0a46a7b116aD5b0D16d2B105'),

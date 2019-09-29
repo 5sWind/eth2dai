@@ -26,6 +26,7 @@ import { WithLoadingIndicatorInline } from '../utils/loadingIndicator/LoadingInd
 import Eth2DaiLogo from './Eth2DaiLogo.svg';
 import * as styles from './Header.scss';
 import OasisDexLogo from './OasisDexLogo.svg';
+import TaurusLogo from './Taurus-logo.svg';
 import {
   WalletConnectionViewKind,
   walletConnectionViewManual$,
@@ -110,9 +111,7 @@ class Header extends React.Component<HeaderProps> {
             <section className={section}>
               <a href="/" className={logo}>
                 {
-                  process.env.REACT_APP_OASIS_DEX_ENABLED === '1' ?
-                    <SvgImage image={OasisDexLogo}/> :
-                    <SvgImage image={Eth2DaiLogo}/>
+                    <SvgImage image={TaurusLogo}/>
                 }
               </a>
             </section>
@@ -124,6 +123,7 @@ class Header extends React.Component<HeaderProps> {
                   <HeaderNavLink to={`${rootUrl}instant`} name="Instant"/>}
                   {this.props.walletStatus === 'connected' &&
                   <HeaderNavLink to={`${rootUrl}account`} name="Account"/>}
+                  <HeaderNavLink to={`${rootUrl}cdp`} name="CDP Portal"/>
                 </div>
               </nav>
             </section>

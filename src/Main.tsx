@@ -1,12 +1,13 @@
 import createBrowserHistory from 'history/createBrowserHistory';
 import * as React from 'react';
-import { Redirect, Route, Router, Switch } from 'react-router';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { Redirect, Router } from 'react-router';
+import { Route, RouteComponentProps, Switch, withRouter } from 'react-router-dom';
 
 import { map } from 'rxjs/operators';
 import { setupAppContext, theAppContext } from './AppContext';
 import { BalancesView } from './balances/BalancesView';
 import { WalletStatus, walletStatus$ } from './blockchain/wallet';
+import { CDPExchange } from './cdp/CDPViewPanel';
 import { ExchangeViewTxRx } from './exchange/ExchangeView';
 import { HeaderTxRx } from './header/Header';
 import * as styles from './index.scss';
@@ -64,7 +65,9 @@ class Routes extends React.Component<{ status: WalletStatus }> {
           this.props.status === 'connected' &&
           <Route path={'/account'} component={BalancesView}/>
         }
-        <Redirect from={'/balances'} to={'/account'}/>
+          {process.env.REACT_APP_INSTANT_ENABLED === '1' &&
+          <Route exact={false} path={'/cdp'} component={CDPExchange}/>}
+          <Redirect from={'/balances'} to={'/account'}/>
         <Redirect from={'/'} to={'/market'}/>
       </Switch>
     );

@@ -1,0 +1,267 @@
+@import "../utils/Variables";
+@import "../utils/Mixins";
+
+.panel {
+  position: relative;
+
+  max-width: 490px;
+  min-height: 430px;
+
+  margin: auto;
+
+  padding: 1.5em;
+
+  letter-spacing: 1.2px;
+
+  h1, h2, h3, h4, h5, h6 {
+    @include fontMontserratMedium;
+    font-size: 1em;
+    margin: 0 0;
+  }
+}
+
+.header {
+  line-height: 1.25em;
+
+  width: 100%;
+
+  h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+  }
+}
+
+.footer {
+  margin-top: auto;
+}
+
+.tradeDetails {
+  min-height: 6.5rem;
+}
+
+// Particular view ( Step 1 )
+.details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  border: 1px solid $button-border-disabled;
+  border-radius: .25rem;
+
+  margin-top: 1.25rem;
+  margin-bottom: 1rem;
+
+  &.finalization {
+    font-size: 0.75rem;
+    min-height: 2rem;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    padding: 0;
+
+    @include media-breakpoint-down(md) {
+      min-height: 3rem;
+      padding: 6px;
+    }
+  }
+
+  &.transaction {
+    position: relative;
+    min-height: 0;
+
+    padding: 1rem 1.5rem;
+    margin-top: 0;
+    margin-bottom: .75rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @include media-breakpoint-down(md) {
+      min-height: 3rem;
+      padding-bottom: 3rem;
+    }
+  }
+
+  &.account {
+    padding: 1rem;
+  }
+}
+
+.assets {
+  display: flex;
+  justify-content: space-between;
+}
+
+%errors-base {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: map-get($inputHeight, lg);
+  border: 1px solid $button-border-disabled;
+  border-radius: .25rem;
+  margin-top: 1rem;
+
+  @include fontMontserratMedium;
+  font-size: 12px;
+  letter-spacing: 1.10px;
+
+  @include media-breakpoint-down(md) {
+    margin: 1rem 0;
+    font-size: 10px;
+  }
+
+  @include media-breakpoint-down(sm) {
+    font-size: 9px;
+  }
+
+  &.hidden {
+    visibility: hidden;
+  }
+}
+
+.errors {
+  @extend %errors-base;
+  color: $errors;
+}
+
+.warnings {
+  @extend %errors-base;
+  color: #828287;
+}
+
+// Asset Picker
+
+
+.tradingSide {
+  display: inline-flex;
+  flex-direction: column;
+  max-width: 175px;
+}
+
+
+.swapIcon {
+  position: relative;
+  bottom: 1.5rem;
+  margin: auto .5rem;
+
+  cursor: pointer;
+}
+
+.cornerIcon {
+  height: 28px;
+  width: 28px;
+  border: 1px solid $button-border-disabled;
+  border-radius: 100%;
+}
+
+.accountIcon {
+  border-color: $grey-light;
+
+  :global(.account-icon-background) {
+    fill: transparent;
+  }
+}
+
+.settingsIcon, .backIcon {
+  padding: .25rem;
+}
+
+.settingsIcon, .backIcon, .accountIcon {
+  border-color: $grey-light;
+
+  :global(.cog-wheel-icon), :global(.back-icon),  :global(.account-icon-body) {
+    fill: $white;
+  }
+
+  &:hover:enabled {
+    border-color: $button-border-hover;
+  }
+
+  &:disabled {
+    :global(.cog-wheel-icon), :global(.back-icon), :global(.account-icon-body) {
+      fill: $grey-light;
+    }
+  }
+}
+
+
+.input {
+  height: 2rem;
+
+  @include fontMontserratMedium;
+  font-size: .75rem;
+
+  @include media-breakpoint-down(md) {
+    font-size: .625rem;
+  }
+
+  border: 1px solid $grey-light;
+  border-radius: .125rem;
+
+  padding: .5rem;
+
+  text-align: center;
+  letter-spacing: 1.1px;
+  color: $white;
+
+  &::placeholder {
+    text-transform: uppercase;
+    color: $input-number-color;
+  }
+
+  &:hover {
+    border-color: $button-border-hover;
+  }
+}
+
+.inputWrapper {
+  position: relative;
+  color: $white;
+}
+
+%inputSuffixPrefix {
+  position: absolute;
+  font-weight: 700;
+  top: 50%;
+  transform: translateY(-50%);
+  color: $button-border-hover;
+}
+
+.inputApprox {
+  @extend %inputSuffixPrefix;
+  left: 1rem;
+}
+
+.inputPercentage {
+  @extend %inputSuffixPrefix;
+  font-size: 12px;
+  right: 1rem;
+}
+
+.button {
+  width: 100%;
+
+  &:disabled {
+    color: $grey-light
+  }
+}
+
+.tradingAsset {
+  width: 100%;
+  max-width: 7.75rem;
+  margin: auto auto 1rem;
+}
+
+.closeButton {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 100%;
+  padding: 5px;
+
+  svg {
+    fill: $errors;
+  }
+}
